@@ -8,6 +8,8 @@ app.use(express.json());
 app.post('/webhook', async (req, res) => {
   const message = req.body?.body?.messageData?.textMessageData?.textMessage;
   const chatId = req.body?.body?.senderData?.chatId;
+  console.log('📩 התקבלה הודעה:', JSON.stringify(req.body, null, 2));
+
 
   if (message === 'היי') {
     await axios.post(`https://api.green-api.com/waInstance${process.env.INSTANCE_ID}/sendMessage/${process.env.TOKEN}`, {
