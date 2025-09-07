@@ -11,12 +11,12 @@ app.post('/webhook', async (req, res) => {
   console.log('📩 התקבלה הודעה:', JSON.stringify(req.body, null, 2));
 
 
-  if (message === 'היי') {
+ // if (message && message.includes('היי')) {
     await axios.post(`https://api.green-api.com/waInstance${process.env.INSTANCE_ID}/sendMessage/${process.env.TOKEN}`, {
       chatId,
       message: 'היי עומר! איך אפשר לעזור?'
     });
-  }
+  //}
 
   res.sendStatus(200);
 });
